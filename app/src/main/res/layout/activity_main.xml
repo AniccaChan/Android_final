@@ -10,11 +10,120 @@
         android:id="@+id/imageView"
         android:layout_width="212dp"
         android:layout_height="186dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="48dp"
         android:onClick="Show"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="416dp"
+        android:layout_height="158dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/Image1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/Text1"
+            android:layout_width="282dp"
+            android:layout_height="106dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="42sp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="416dp"
+        android:layout_height="158dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
+
+        <ImageView
+            android:id="@+id/Image2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/Text2"
+            android:layout_width="282dp"
+            android:layout_height="106dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="42sp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="416dp"
+        android:layout_height="158dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+        <ImageView
+            android:id="@+id/Image3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/Text3"
+            android:layout_width="282dp"
+            android:layout_height="106dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="42sp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent" />
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
