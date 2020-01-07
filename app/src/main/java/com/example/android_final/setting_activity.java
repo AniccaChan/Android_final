@@ -37,7 +37,6 @@ public class setting_activity extends AppCompatActivity {
         setContentView(R.layout.activity_setting_activity);
         Intent intent = getIntent();
         String type;
-
         type =  intent.getStringExtra("type");
         Type = type;
         ImageView imageview = findViewById(R.id.imageView2);
