@@ -10,6 +10,7 @@
         android:id="@+id/imageView2"
         android:layout_width="139dp"
         android:layout_height="140dp"
+        android:scaleType="fitStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/alert_dark_frame" />
@@ -28,14 +29,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="263dp"
+        android:layout_width="320dp"
         android:layout_height="140dp"
-        android:layout_marginBottom="428dp"
+        android:layout_marginBottom="392dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -43,6 +45,7 @@
         android:layout_width="162dp"
         android:layout_height="149dp"
         android:layout_marginBottom="212dp"
+        android:onClick="play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintHorizontal_bias="0.697"
@@ -55,6 +58,7 @@
         android:layout_height="149dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="212dp"
+        android:onClick="record"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/record" />

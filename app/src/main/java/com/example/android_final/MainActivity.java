@@ -1,11 +1,14 @@
 package com.example.android_final;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         if(on_create != 0){
             Intent intent = getIntent();
             set(intent);
+        }
+        else{
+            permissionCheck();
         }
         on_create++;
 
@@ -79,4 +85,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void permissionCheck()
+    {
+        int permission1 = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int permission2 = ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
+        if (permission1 != PackageManager.PERMISSION_GRANTED || permission2 != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},1);
+        }
+    }
 }

@@ -7,6 +7,8 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.View;
@@ -19,6 +21,8 @@ import android.widget.TimePicker;
 import org.apache.http.conn.ssl.StrictHostnameVerifier;
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Time;
 import java.time.Clock;
 import java.time.LocalDate;
@@ -26,6 +30,8 @@ import java.util.Calendar;
 
 public class setting_activity extends AppCompatActivity {
 
+    private boolean busy;
+    private boolean isPlay;
     String Month;
     String Day;
     String Hour;
@@ -36,6 +42,8 @@ public class setting_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_activity);
         Intent intent = getIntent();
+        isPlay = false;
+        busy = false;
         String type;
         type =  intent.getStringExtra("type");
         Type = type;
@@ -98,13 +106,67 @@ public class setting_activity extends AppCompatActivity {
         goback.putExtra("Type",Type);
         startActivity(goback);
     }
+
+    private File recordFile;
+    private MediaRecorder mediaRecorder = new MediaRecorder();
+    private String temp="";
     public void record(View view){
-
+        ImageView imageview = findViewById(R.id.imageView4);
+        if(busy==false) {
+            busy=true;
+            try
+            {
+                temp=Month+Day+Hour+Minute;
+                recordFile = File.createTempFile(temp+"", ".m4a", getCacheDir());
+                mediaRecorder.setOutputFile(recordFile.getAbsolutePath());
+                mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+                mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+                mediaRecorder.setAudioEncodingBitRate(326000);
+                mediaRecorder.setAudioSamplingRate(44100);
+                mediaRecorder.setAudioChannels(1);
+                mediaRecorder.prepare();
+                mediaRecorder.start();
+                imageview.setImageDrawable(getResources().getDrawable(R.drawable.recording));
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else{
+            mediaRecorder.stop();
+            mediaRecorder.reset();
+            mediaRecorder.release();
+            mediaRecorder=null;
+            busy=false;
+            imageview.setImageDrawable(getResources().getDrawable(R.drawable.record));
+        }
     }
+    private MediaPlayer mediaPlayer = new MediaPlayer();
     public void play(View view){
-
+        ImageView imageview = findViewById(R.id.imageView3);
+        if(isPlay==false){
+            isPlay=true;
+            try
+            {
+                mediaPlayer.setDataSource(recordFile.getAbsolutePath());
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            imageview.setImageDrawable(getResources().getDrawable(R.drawable.playing));
+        }
+        else{
+            isPlay=false;
+            mediaPlayer.reset();
+            mediaPlayer.release();
+            mediaPlayer = null;
+            imageview.setImageDrawable(getResources().getDrawable(R.drawable.play));
+        }
     }
-
 
 }
 
